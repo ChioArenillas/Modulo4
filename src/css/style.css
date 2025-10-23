@@ -1,0 +1,122 @@
+ body{
+    margin: 0;
+    font-family: 'helvetica', sans;
+    font-size: 13px;
+    background-color: #26282b;
+    color: #c0c0c0;
+}
+#root{
+    display: flex;
+    justify-content: center;
+}
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px;
+    gap: 20px;
+}
+.button{
+    fill: #fff;
+    stroke: #fff;
+    margin: 5px;
+}
+.button:hover{
+    cursor: pointer;
+    stroke: #5d5c5c;
+    fill: #5d5c5c;
+}
+.controls-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search-input {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.result-message {
+  display: flex;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 68px;
+  align-items: center;
+  justify-content: center;
+}
+.movie-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    gap: 50px;
+    justify-content: flex-start;
+    align-items: start;
+    margin-left: 50px;
+    padding: 30px;
+    min-height: 100vh;
+}
+/* GRID */
+.movie-grid{
+    width: 220px; 
+    display: flex;
+    flex-direction: column;
+}
+.movie-grid-poster{
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 220px; /* esto habría que quitarlo si tenemos las URL */
+}
+.movie-grid-title{
+    margin-bottom: 2px;
+    font-size: 2em;
+    font-weight: bold;
+}
+.movie-grid-data{
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+.movie-grid-description-heading{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.movie-grid-description{
+    margin: 6px 0;
+    line-height: 1.4;
+}
+.movie-grid-other{
+    line-height: 1.4;
+    padding: 5px 0;
+    border-bottom: 1px solid #c0c0c0;
+}
+.movie-grid-other:last-child{
+    border: none; 
+}
+.movie-grid-other span{
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+/* LIST */
+.movie-list{
+    display: grid;
+    grid-template-columns: 40px 80px 500px 300px;
+    align-items: center;
+    gap: 40px;
+    background-color: #1b1a1a;
+    padding: 20px;
+    border-radius: 8px;
+}
+.movie-list-poster{
+    width: 80px;
+    border-radius: 5px;
+}
+.movie-list-rating {
+  text-align: right;
+  font-size: 1rem;
+}

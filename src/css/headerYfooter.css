@@ -1,0 +1,108 @@
+* :where(
+    :not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)
+){
+    all: unset;
+    display: revert;
+}
+li{
+    list-style-type: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* HEADER */
+
+.header-background{
+    background-color: #1a1d24;  
+}
+
+.header{
+    position: sticky;
+    top: 0;
+    background-color: #1a1d24;
+    z-index: 10;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    block-size: 70px;
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-bottom: 20px;
+    gap: 20px;
+
+    .nav ul{
+        display: flex;
+        align-items: center;
+    }
+    .nav ul.menu {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        color: #ffff;
+    }
+    .nav .menu .item{
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom: 2px solid transparent;
+        padding-block-end: 5px;
+    }
+    .nav .menu .item:hover {
+        cursor: pointer;
+        border-bottom: 2px solid orange;
+    }
+    .nav ul.socials {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .tools {
+        fill: #ffff;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+    .tools:hover{
+        cursor: pointer;
+    }
+    .separator {
+        font-size: 25px;
+        color: #737373;
+    }
+    .socials svg {
+        fill: #ffff;
+        inline-size: 18px;
+        block-size: 18px;
+    }
+    .socials:hover{
+        cursor: pointer;
+    }
+    .socials .twitter svg:hover{
+        fill: #1da1f2;
+    }
+    .socials .facebook svg:hover{
+        fill: #26408a;
+    }
+    .socials .instagram svg:hover{
+        fill: #ce2e92;
+    }
+    .socials .youtube svg:hover{
+        fill: #e0011a;
+    }
+}
+
+/* FOOTER */
+
+.footer{
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 3fr;
+    padding: 50px 100px;
+    color: #ffff;
+    background-color: #1a1d24;
+}
+.footer-year {
+    justify-self: end;
+
+}
