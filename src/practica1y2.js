@@ -50,6 +50,7 @@ function clickList() {
   movieContainer.innerHTML = "";
   addMovieList();
 }
+//AÑADIRLE QUE AL HACER BACK SE PONGAN LOS CONTROLES EN BLANCO
 function clickBack() {
   movieContainer.innerHTML = "";
   addMovieGrid();
@@ -60,15 +61,7 @@ document.querySelector("#root").appendChild(movieContainer);
 /* ****************************************************************++ */
 
 /* GRID */
-/*   function createPosterElement(path){
-    const moviePosterWidth = 400;
-    const element = document.createElement("img");
-    element.src = getMoviePosterUrl(path, moviePosterWidth);
-    element.className = "movie-poster";    
-    return element;
-  }
- */
-//para que aparezca la imagen (quitarlo cuándo tenga las URL)
+ 
 function createPosterElement(poster) {
   const element = document.createElement("img");
   element.setAttribute("src", poster);

@@ -17,6 +17,7 @@
     gap: 20px;
 }
 .button{
+    color: #fff;
     fill: #fff;
     stroke: #fff;
     margin: 5px;
@@ -26,6 +27,19 @@
     stroke: #5d5c5c;
     fill: #5d5c5c;
 }
+.type-bar{
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-left: 100px;
+}
+.type:hover{
+    cursor: pointer;
+    color: #5d5c5c;
+}
+
 .controls-container {
   display: flex;
   gap: 10px;
@@ -105,7 +119,8 @@
 /* LIST */
 .movie-list{
     display: grid;
-    grid-template-columns: 40px 80px 500px 300px;
+    grid-template-columns: 1fr 1fr 6fr 0.5fr 0.5fr;
+    grid-template-rows: 1fr;
     align-items: center;
     gap: 40px;
     background-color: #1b1a1a;
