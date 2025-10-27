@@ -7,12 +7,12 @@ Catálogo de contenidos (películas). Parte 2.
 Filtrado, ordenación y búsqueda.
 */
 
-/* FALTARÍA QUE AL VOLVER A ATRÁS SE RESETEEN LOS SELECCIONADORES
-FALTARÍA QUE LOS SELECCIONADORES SE PUEDAN USAR TODOS JUNTOS BÚSQUEDA+CATEGOR+A-Z */
-
 console.clear();
 import { movies } from "./dataFilms";
-//import { getMoviePosterUrl } from "./utils"; //aquí poner el archivo qorrespondiente
+
+//Oculta los botones de listado
+const listOption = document.querySelector(".type-bar");
+if (listOption) listOption.style.display = "none";
 
 const movieContainer = document.createElement("div");
 movieContainer.className = "movie-container";
@@ -43,7 +43,7 @@ function addMovieList() {
   }
 }
 function clickGrid() {
-  movieContainer.innerHTML = ""; //primero vacía toda la página
+  movieContainer.innerHTML = "";
   addMovieGrid();
 }
 function clickList() {
@@ -52,13 +52,21 @@ function clickList() {
 }
 //AÑADIRLE QUE AL HACER BACK SE PONGAN LOS CONTROLES EN BLANCO
 function clickBack() {
+  const searchInput = document.querySelector("#search");
+  const resultMessage = document.querySelector("#resultMessage");
+  const selectCategory = document.querySelector("#select select");
+  const selectdOrder = document.querySelector("#order select");
+
+  if (searchInput) searchInput.value = "";
+  if (resultMessage) resultMessage.textContent = "";
+  if (selectCategory) selectCategory.selectedIndex = 0;
+  if (selectOrder) selectOrder.selectedIndex = 0;
+
   movieContainer.innerHTML = "";
   addMovieGrid();
 }
 addMovieGrid(); //para que al abrir la página primero se cargue el grid por defecto
 document.querySelector("#root").appendChild(movieContainer);
-
-/* ****************************************************************++ */
 
 /* GRID */
 
@@ -106,14 +114,7 @@ function createSumaryElement() {
   element.textContent = `Sumary`;
   return element;
 }
-//creo que la función siguiente no se está usando
-/*   function createCategoryElement(category){
-    const element = document.createElement("div");
-    element.className = "movie-grid-other";
-    element.textContent = category;
-    return element;
-  } 
- */
+
 function createMovieElement(movieObj) {
   const movieElement = document.createElement("div");
   movieElement.className = "movie-grid";
@@ -169,38 +170,7 @@ const categories = Object.freeze({
 
 const select = document.createElement("select");
 select.setAttribute("name", "categories");
-select.addEventListener("change", () => {
-  const selectCategory = select.value;
-  movieContainer.innerHTML = "";
-
-  let filteredMovies = [];
-  if (selectCategory === "categorias") {
-    filteredMovies = movies;
-  } else {
-    filteredMovies = movies.filter((movie) => {
-      if (Array.isArray(movie.category)) {
-        return movie.category.includes(categories[selectCategory]);
-      } else {
-        return movie.category === categories[selectCategory];
-      }
-    });
-  }
-
-  const isListView =
-    movieContainer.firstChild?.classList.contains("movie-list-item");
-
-  if (isListView) {
-    filteredMovies.forEach((movie, i) => {
-      const movieElement = createMovieListElement(movie, i + 1);
-      movieContainer.appendChild(movieElement);
-    });
-  } else {
-    filteredMovies.forEach((movie) => {
-      const movieElement = createMovieElement(movie);
-      movieContainer.appendChild(movieElement);
-    });
-  }
-});
+select.addEventListener("change", aplicarFiltros);
 
 Object.entries(categories).forEach((entry) => {
   const option = document.createElement("option");
@@ -233,49 +203,7 @@ Object.entries(order).forEach(([Key, value]) => {
 });
 document.querySelector("#order").appendChild(selectOrder);
 
-selectOrder.addEventListener("change", () => {
-  const selectedOrder = selectOrder.value;
-  let orderedMovies = [...movies];
-
-  switch (selectedOrder) {
-    case "tituloAscendente":
-      orderedMovies.sort((a, b) => a.title.localeCompare(b.title));
-      break;
-    case "tituloDescendente":
-      orderedMovies.sort((a, b) => b.title.localeCompare(a.title));
-      break;
-    case "directorAscendente":
-      orderedMovies.sort((a, b) => a.director.localeCompare(b.director));
-      break;
-    case "directorDescendente":
-      orderedMovies.sort((a, b) => b.director.localeCompare(a.director));
-      break;
-    case "añoAscendente":
-      orderedMovies.sort((a, b) => a.year - b.year);
-      break;
-    case "añoDescendente":
-      orderedMovies.sort((a, b) => b.year - a.year);
-      break;
-    default:
-      orderedMovies = [...movies];
-  }
-
-  movieContainer.innerHTML = "";
-  const isListView =
-    movieContainer.firstChild?.classList.contains("movie-list-item");
-
-  if (isListView) {
-    orderedMovies.forEach((movie, i) => {
-      const movieElement = createMovieListElement(movie, i + 1);
-      movieContainer.appendChild(movieElement);
-    });
-  } else {
-    orderedMovies.forEach((movie) => {
-      const movieElement = createMovieElement(movie);
-      movieContainer.appendChild(movieElement);
-    });
-  }
-});
+selectOrder.addEventListener("change", aplicarFiltros);
 
 /* BUTTONS CONTAINER */
 const buttonsContainer = document.createElement("div");
@@ -283,7 +211,6 @@ buttonsContainer.className = "buttons-container";
 document.querySelector("#buttons")?.appendChild(buttonsContainer);
 
 /* BOTÓN DE BÚSQUEDA */
-
 const searchInput = document.querySelector("#search");
 const resultMessage = document.querySelector("#resultMessage");
 
@@ -316,6 +243,82 @@ searchInput.addEventListener("input", () => {
     });
   }
 });
+
+/* FILTROS */
+function aplicarFiltros() {
+  const searchInput = document.querySelector("#search");
+  const selectCategory = document.querySelector("#select select");
+  const selectOrder = document.querySelector("#order select");
+  const resultMessage = document.querySelector("#resultMessage");
+
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  const selectedCategory = selectCategory.value;
+  const selectedOrder = selectOrder.value;
+
+  let filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm)
+  );
+
+  //categoría
+  if (selectedCategory !== "categorias") {
+    filteredMovies = filteredMovies.filter((movie) => {
+      if (Array.isArray(movie.category)) {
+        return movie.category.includes(categories[selectedCategory]);
+      } else {
+        return movie.category === categories[selectedCategory];
+      }
+    });
+  }
+
+  //Orden
+  switch (selectedOrder) {
+    case "tituloAscendente":
+      filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case "tituloDescendente":
+      filteredMovies.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+    case "directorAscendente":
+      filteredMovies.sort((a, b) => a.director.localeCompare(b.director));
+      break;
+    case "directorDescendente":
+      filteredMovies.sort((a, b) => b.director.localeCompare(a.director));
+      break;
+    case "añoAscendente":
+      filteredMovies.sort((a, b) => a.year - b.year);
+      break;
+    case "añoDescendente":
+      filteredMovies.sort((a, b) => b.year - a.year);
+      break;
+    default:
+      break;
+  }
+
+  movieContainer.innerHTML = "";
+
+  if (filteredMovies.length === 0) {
+    resultMessage.textContent = "No se encontraron resultados.";
+  } else if (searchTerm !== "" || selectedCategory !== "categorias") {
+    resultMessage.textContent = `Se han encontrado ${filteredMovies.length} películas.`;
+  } else {
+    resultMessage.textContent = "";
+  }
+
+  const isListView =
+    movieContainer.firstChild?.classList.contains("movie-list");
+
+  if (isListView) {
+    filteredMovies.forEach((movie, i) => {
+      const el = createMovieListElement(movie, i + 1);
+      movieContainer.appendChild(el);
+    });
+  } else {
+    filteredMovies.forEach((movie) => {
+      const el = createMovieElement(movie);
+      movieContainer.appendChild(el);
+    });
+  }
+}
 
 // Debounce (espera antes de filtrar mientras se escribe)
 let debounceTimer;

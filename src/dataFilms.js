@@ -13,7 +13,7 @@ export const movies = [
     director: "David Fincher",
     actors: "Brad Pitt, Edward Norton, Helena Bonham Carter",
     year: 1999,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
     description:
       "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
     category: "Drama",
@@ -35,7 +35,7 @@ export const movies = [
     director: "Quentin Tarantino",
     actors: "Samuel L. Jackson, Uma Thurman, Bruce Willis",
     year: 1994,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//hNcQAuquJxTxl2fJFs1R42DrWcf.jpg",
     description:
       "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     category: "Crime",
@@ -46,18 +46,18 @@ export const movies = [
     director: "Steven Spielberg",
     actors: "Liam Neeson, Ralph Fiennes, Ben Kingsley",
     year: 1993,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
     description:
       "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
     category: "Biography",
     rating: 8.9,
   },
   {
-    title: "The Lord of theRing: The Return of the King",
+    title: "The Lord of the Rings: The Return of the King",
     director: "Peter Jackson",
     actors: "Elijah Wood, Viggo Mortensen, Ian McKellen",
     year: 2003,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
     description:
       "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
     category: "Adventure",
@@ -68,7 +68,7 @@ export const movies = [
     director: "David Fincher",
     actors: "Jesse Eisenberg, Andrew Garfield, Justin Timberlake",
     year: 2010,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg", 
     description:
       "Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, but is later sued by two brothers who claimed he stole their idea, and the co-founder who was later squeezed out of the business.",
     category: "Biography",
@@ -79,18 +79,18 @@ export const movies = [
     director: "Martin Scorsese",
     actors: "Robert De Niro, Ray Liotta, Joe Pesci",
     year: 1990,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
     description:
       "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
     category: "Biography",
     rating: 8.7,
   },
   {
-    title: "The Lord of theRing: The Fellowship of the Ring",
+    title: "The Lord of the Rings: The Fellowship of the Ring",
     director: "Peter Jackson",
     actors: "Elijah Wood, Ian McKellen, Orlando Bloom",
     year: 2001,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
     description:
       "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
     category: "Adventure",
@@ -101,7 +101,7 @@ export const movies = [
     director: "David Fincher",
     actors: "Morgan Freeman, Brad Pitt, Kevin Spacey",
     year: 1995,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//uVPcVz4b2hnSGrXYLdIGRXwcivs.jpg",
     description:
       "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.",
     category: "Crime",
@@ -112,7 +112,7 @@ export const movies = [
     director: "Robert Zemeckis",
     actors: "Tom Hanks, Robin Wright, Gary Sinise",
     year: 1994,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//oiqKEhEfxl9knzWXvWecJKN3aj6.jpg",
     description:
       "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75.",
     category: "Drama",
@@ -123,7 +123,7 @@ export const movies = [
     director: "Quentin Tarantino",
     actors: "Jamie Foxx, Christoph Waltz, Leonardo DiCaprio",
     year: 2012,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//7oWY8VDWW7thTzWh3OKYRkWUlD5.jpg",  
     description:
       "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
     category: "Drama",
@@ -134,18 +134,18 @@ export const movies = [
     director: "Steven Spielberg",
     actors: "Tom Hanks, Matt Damon, Tom Sizemore",
     year: 1998,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//uqx37cS8cpHg8U35f9U5IBlrCV3.jpg",
     description:
       "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
     category: "Action",
     rating: 8.6,
   },
   {
-    title: "The Lord of theRing: The Two Towers",
+    title: "The Lord of the Rings: The Two Towers",
     director: "Peter Jackson",
     actors: "Elijah Wood, Ian McKellen, Viggo Mortensen",
     year: 2002,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg",
     description:
       "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.",
     category: "Adventure",
@@ -156,7 +156,7 @@ export const movies = [
     director: "David Fincher",
     actors: "Ben Affleck, Rosamund Pike, Neil Patrick Harris",
     year: 2014,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//ts996lKsxvjkO2yiYG0ht4qAicO.jpg",
     description:
       "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.",
     category: "Drama",
@@ -167,7 +167,7 @@ export const movies = [
     director: "Martin Scorsese",
     actors: "Robert De Niro, Joe Pesci, Sharon Stone",
     year: 1995,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//7x8lsyTB0G7OrLzQ7qxt3ywQ4OY.jpg",
     description:
       "A tale of greed, deception, money, power, and murder occur between two bestfriend: a mafia enforcer and a casino executive compete against each other over a gambling empire, and over a fast-living and fast-loving socialite.",
     category: "Crime",
@@ -178,7 +178,7 @@ export const movies = [
     director: "Christopher Nolan",
     actors: "Leonardo DiCaprio, Ken Watanabe, Joseph Gordon-Levitt",
     year: 2010,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg",
     description:
       "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets, is offered a chance to regain his old life as payment for a task considered to beimpossibl: inception.",
     category: "Action",
@@ -189,7 +189,7 @@ export const movies = [
     director: "Quentin Tarantino",
     actors: "Leonardo DiCaprio, Brad Pitt, Margot Robbie",
     year: 2019,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//8j58iEBw9pOXFD2L0nt0ZXeHviB.jpg",
     description:
       "A faded television actor and his stunt double strive to achieve fame and success in the final years of Hollywood's Golden Age in 1969 Los Angeles.",
     category: "Comedy",
@@ -200,7 +200,7 @@ export const movies = [
     director: "David Fincher",
     actors: "Jake Gyllenhaal, Robert Downey Jr., Mark Ruffalo",
     year: 2007,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//gmoypdRU7rCJZZrZFKGirONbgrI.jpg",
     description:
       "In the late 1960s/early 1970s, a San Francisco cartoonist becomes an amateur detective obsessed with tracking down the Zodiac Killer, an unidentified individual who terrorizes Northern California with a killing spree.",
     category: "Crime",
@@ -211,7 +211,7 @@ export const movies = [
     director: "Martin Scorsese",
     actors: "Leonardo DiCaprio, Jonah Hill, Margot Robbie",
     year: 2013,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//kW9LmvYHAaS9iA0tHmZVq8hQYoq.jpg",
     description:
       "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption, and the federal government.",
     category: "Biography",
@@ -222,7 +222,7 @@ export const movies = [
     director: "Christopher Nolan",
     actors: "Matthew McConaughey, Anne Hathaway, Jessica Chastain",
     year: 2014,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
     description:
       "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
     category: "Adventure",
@@ -233,7 +233,7 @@ export const movies = [
     director: "Quentin Tarantino",
     actors: "Samuel L. Jackson, Kurt Russell, Jennifer Jason Leigh",
     year: 2015,
-    poster: "http://image.tmdb.org/t/p/w500//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    poster: "http://image.tmdb.org/t/p/w500//jIywvdPjia2t3eKYbjVTcwBQlG8.jpg",
     description:
       "In post-Civil War Wyoming, bounty hunters try to find shelter during a blizzard but get involved in a plot of betrayal and deception. Will they survive?",
     category: "Drama",

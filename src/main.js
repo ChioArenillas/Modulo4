@@ -8,5 +8,4 @@ import "../src/css/style.css";
 //JAVASCRIPT
 //import "./practica1y2.js";
 import "./practica3y4.js";
-//import "./movieUtils.js"
 

@@ -39,18 +39,16 @@ const listOptions = Object.freeze({
 
 let currentListType = listOptions.popular;
 
-//sacar el listado de pelis
-function getMovieListUrl(listOption) {
   const baseURL = "https://api.themoviedb.org/3/movie/";
   const apiKey = "c1b971c96d86032775fa6707e4286d30";
   const langCode = "es-ES";
+
+//sacar el listado de pelis
+function getMovieListUrl(listOption) {
   return `${baseURL}${listOption}?api_key=${apiKey}&language=${langCode}`;
 }
 //sacar el detalle de una peli
 function getMovieDetailUrl(movieId) {
-  const baseURL = "https://api.themoviedb.org/3/movie/";
-  const apiKey = "c1b971c96d86032775fa6707e4286d30";
-  const langCode = "es-ES";
   return `${baseURL}${movieId}?api_key=${apiKey}&language=${langCode}`;
 }
 
@@ -151,15 +149,12 @@ async function addMovieList() {
 /*  BOTONES  */
 
 function clickGrid() {
-  movieContainer.innerHTML = "";
   addMovieGrid();
 }
 function clickList() {
-  movieContainer.innerHTML = "";
   addMovieList();
 }
 function clickBack() {
-  movieContainer.innerHTML = "";
   addMovieGrid();
 }
 popularButton.addEventListener("click", () => {
@@ -392,9 +387,6 @@ async function pageMovieDetail(movie) {
 
 //AÑADIR CAST
 async function getMovieCredits(movieId) {
-  const apiKey = "c1b971c96d86032775fa6707e4286d30";
-  const baseURL = "https://api.themoviedb.org/3/movie/";
-  const langCode = "es-ES";
   const url = `${baseURL}${movieId}/credits?api_key=${apiKey}&language=${langCode}`;
 
   try {
@@ -409,9 +401,6 @@ async function getMovieCredits(movieId) {
 
 //AÑADIR PELIS RECOMENDADAS
 async function getMovieRecommendations(movieId) {
-  const apiKey = "c1b971c96d86032775fa6707e4286d30";
-  const baseURL = "https://api.themoviedb.org/3/movie/";
-  const langCode = "es-ES";
   const url = `${baseURL}${movieId}/recommendations?api_key=${apiKey}&language=${langCode}`;
 
   try {

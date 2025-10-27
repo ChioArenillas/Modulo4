@@ -181,3 +181,6 @@
 .recommendations-grid p{
     margin-top: 15px;
 }
+.recommendation-item :hover{
+    cursor: pointer;
+}
