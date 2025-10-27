@@ -61,7 +61,7 @@ document.querySelector("#root").appendChild(movieContainer);
 /* ****************************************************************++ */
 
 /* GRID */
- 
+
 function createPosterElement(poster) {
   const element = document.createElement("img");
   element.setAttribute("src", poster);
