@@ -135,3 +135,49 @@
   text-align: right;
   font-size: 1rem;
 }
+
+/* MOVIE DETAIL */
+
+.movie-detail{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.movie-detail-poster{
+    width: 80%;
+}
+.movie-detail-title{
+    font-size: 48px;
+}
+.movie-credits{
+    gap: 15px;
+}
+.director{
+    margin-bottom: 20px;
+}
+.cast-grid{
+    display: flex;
+    gap: 20px;
+}
+.actor-item img{
+    width: 70%;
+}
+.actor-name{
+    margin-top: 15px;
+}
+
+/* RECOMENDACIONES */
+
+.movie-recommendations{
+    font-size: 28px;
+    margin: 20px 0px;
+}
+.recommendations-grid{
+    display: flex;
+    gap: 15px;
+    margin: 20px 0px 20px 0px;
+    font-size: 18px;
+}
+.recommendations-grid p{
+    margin-top: 15px;
+}

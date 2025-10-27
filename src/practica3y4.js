@@ -5,7 +5,7 @@ Vista detalle de película.
 */
 
 /* FALTA:
-CSS de detalles peli
+búsqueda y categorías?
 */
 
 //oculta el input de búsqueda
