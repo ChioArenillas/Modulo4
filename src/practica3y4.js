@@ -4,14 +4,6 @@ Práctica 4
 Vista detalle de película.
 */
 
-/* FALTA:
-búsqueda y categorías?
-*/
-
-//oculta el input de búsqueda
-const searchInput = document.querySelector(".search-input");
-if (searchInput) searchInput.style.display = "none";
-
 const movieContainer = document.createElement("div");
 movieContainer.className = "movie-container";
 
@@ -38,10 +30,11 @@ const listOptions = Object.freeze({
 });
 
 let currentListType = listOptions.popular;
+let allMovies = []; //NUEVO
 
-  const baseURL = "https://api.themoviedb.org/3/movie/";
-  const apiKey = "c1b971c96d86032775fa6707e4286d30";
-  const langCode = "es-ES";
+const baseURL = "https://api.themoviedb.org/3/movie/";
+const apiKey = "c1b971c96d86032775fa6707e4286d30";
+const langCode = "es-ES";
 
 //sacar el listado de pelis
 function getMovieListUrl(listOption) {
@@ -76,7 +69,6 @@ async function getMovieDetail(movieId) {
 }
 
 /* GRID */
-
 function createPosterElement(posterPath) {
   const element = document.createElement("img");
   element.className = "movie-grid-poster";
@@ -87,7 +79,6 @@ function createPosterElement(posterPath) {
   }
   return element;
 }
-
 function createTitleElement(title) {
   const element = document.createElement("div");
   element.className = "movie-grid-title";
@@ -127,27 +118,27 @@ function createMovieElement(movie) {
 }
 
 /* RENDERIZADO */
-
 async function addMovieGrid() {
-  const movies = await getMovies(currentListType);
-  movieContainer.innerHTML = "";
-  movies.forEach((movie) => {
-    const el = createMovieElement(movie);
-    movieContainer.appendChild(el);
-  });
+  allMovies = await getMovies(currentListType);
+  renderMovies(allMovies, "grid");
+  aplicarFiltros();
 }
-
 async function addMovieList() {
-  const movies = await getMovies(currentListType);
+  allMovies = await getMovies(currentListType);
+  renderMovies(allMovies, "list");
+}
+function renderMovies(movies, view = "grid") {
   movieContainer.innerHTML = "";
   movies.forEach((movie, i) => {
-    const el = createMovieListElement(movie, i + 1);
+    const el =
+      view === "list"
+        ? createMovieListElement(movie, i + 1)
+        : createMovieElement(movie);
     movieContainer.appendChild(el);
   });
 }
 
 /*  BOTONES  */
-
 function clickGrid() {
   addMovieGrid();
 }
@@ -155,32 +146,40 @@ function clickList() {
   addMovieList();
 }
 function clickBack() {
+  const searchInput = document.querySelector("#search");
+  const selectCategory = document.querySelector("#select select");
+  const selectOrder = document.querySelector("#order select");
+  const resultMessage = document.querySelector("#resultMessage");
+
+  if (searchInput) searchInput.value = "";
+  if (selectCategory) selectCategory.selectedIndex = 0;
+  if (selectOrder) selectOrder.selectedIndex = 0;
+  if (resultMessage) resultMessage.textContent = "";
+
+  currentListType = listOptions.popular;
   addMovieGrid();
 }
 popularButton.addEventListener("click", () => {
   currentListType = listOptions.popular;
   addMovieGrid();
 });
-
 nowPlayingButton.addEventListener("click", () => {
   currentListType = listOptions.nowPlaying;
   addMovieGrid();
 });
-
 topRatedButton.addEventListener("click", () => {
   currentListType = listOptions.topRated;
   addMovieGrid();
 });
-
 upcomingButton.addEventListener("click", () => {
   currentListType = listOptions.upcoming;
   addMovieGrid();
 });
 
 /*  INICIO  */
-
 document.querySelector("#root").appendChild(movieContainer);
-addMovieGrid(); // carga por defecto al abrir
+addMovieGrid();
+
 
 /* LIST */
 function createMovieListElement(movieObj, rank) {
@@ -223,8 +222,7 @@ function createMovieListElement(movieObj, rank) {
   return movieElement;
 }
 
-//PÁGINA DETALLE PELI (FALTA DARLE FORMATO CON CSS)
-
+/* PÁGINA DETALLE PELI */
 async function pageMovieDetail(movie) {
   movieContainer.innerHTML = "";
   const detailContainer = document.createElement("div");
@@ -305,7 +303,7 @@ async function pageMovieDetail(movie) {
     getMovieRecommendations(movie.id),
   ]);
 
-  // CAST
+  /* CAST */
   if (creditsData) {
     const creditsContainer = document.createElement("div");
     creditsContainer.className = "movie-credits";
@@ -347,7 +345,7 @@ async function pageMovieDetail(movie) {
     detailContainer.appendChild(creditsContainer);
   }
 
-  // RECOMENDACIONES
+  /* RECOMENDACIONES */
   if (recommendations.length > 0) {
     const recContainer = document.createElement("div");
     recContainer.className = "movie-recommendations";
@@ -385,7 +383,7 @@ async function pageMovieDetail(movie) {
   movieContainer.appendChild(detailContainer);
 }
 
-//AÑADIR CAST
+/* AÑADIR CAST */
 async function getMovieCredits(movieId) {
   const url = `${baseURL}${movieId}/credits?api_key=${apiKey}&language=${langCode}`;
 
@@ -399,7 +397,7 @@ async function getMovieCredits(movieId) {
   }
 }
 
-//AÑADIR PELIS RECOMENDADAS
+/* AÑADIR PELIS RECOMENDADAS */
 async function getMovieRecommendations(movieId) {
   const url = `${baseURL}${movieId}/recommendations?api_key=${apiKey}&language=${langCode}`;
 
@@ -413,3 +411,172 @@ async function getMovieRecommendations(movieId) {
     return [];
   }
 }
+
+/* SELECT CATEGORY */
+const categories = Object.freeze({
+  categorias: "-Selecciona Categoría-",
+  28: "Acción",
+  12: "Aventura",
+  16: "Animación",
+  35: "Comedia",
+  80: "Crimen",
+  18: "Drama",
+  10751: "Familiar",
+  14: "Fantasía",
+  27: "Terror",
+  878: "Ciencia ficción",
+});
+
+const select = document.createElement("select");
+select.setAttribute("name", "categories");
+select.addEventListener("change", aplicarFiltros);
+
+const firstOption = document.createElement("option");
+firstOption.value = "categorias";
+firstOption.textContent = "-Selecciona Categoría-";
+select.appendChild(firstOption);
+
+Object.entries(categories).forEach((entry) => {
+  const option = document.createElement("option");
+  option.value = entry[0];
+  option.textContent = entry[1];
+  select.appendChild(option);
+});
+
+document.querySelector("#select").appendChild(select);
+
+/* ORDENAR TÍTULO DIRECTOR AÑO */
+const order = Object.freeze({
+  order: "-Selecciona Orden-",
+  tituloAscendente: "Título A-Z",
+  tituloDescendente: "Título Z-A",
+  directorAscendente: "Director A-Z",
+  directorDescendente: "Director Z-A",
+  añoAscendente: "Año Ascendente",
+  añoDescendente: "Año Descendente",
+});
+
+const selectOrder = document.createElement("select");
+selectOrder.setAttribute("name", "order");
+Object.entries(order).forEach(([Key, value]) => {
+  const option = document.createElement("option");
+  option.value = Key;
+  option.textContent = value;
+  selectOrder.appendChild(option);
+});
+document.querySelector("#order").appendChild(selectOrder);
+
+selectOrder.addEventListener("change", aplicarFiltros);
+
+/* BUTTONS CONTAINER */
+const buttonsContainer = document.createElement("div");
+buttonsContainer.className = "buttons-container";
+document.querySelector("#buttons")?.appendChild(buttonsContainer);
+
+/* BOTÓN DE BÚSQUEDA */
+const searchInput = document.querySelector("#search");
+const resultMessage = document.querySelector("#resultMessage");
+
+searchInput.addEventListener("input", () => {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+
+  const filteredMovies = allMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm)
+  );
+  movieContainer.innerHTML = "";
+
+  if (searchTerm === "") {
+    resultMessage.textContent = "";
+  } else if (filteredMovies.length === 0) {
+    resultMessage.textContent = "No se encontraron resultados.";
+  } else {
+    resultMessage.textContent = `Se han encontrado ${filteredMovies.length} películas.`;
+  }
+  const isListView =
+    movieContainer.firstChild?.classList.contains("movie-list");
+  if (isListView) {
+    filteredMovies.forEach((movie, i) => {
+      const movieElement = createMovieListElement(movie, i + 1);
+      movieContainer.appendChild(movieElement);
+    });
+  } else {
+    filteredMovies.forEach((movie) => {
+      const movieElement = createMovieElement(movie);
+      movieContainer.appendChild(movieElement);
+    });
+  }
+});
+
+/* FILTROS */
+function aplicarFiltros() {
+  const searchInput = document.querySelector("#search");
+  const selectCategory = document.querySelector("#select select");
+  const selectOrder = document.querySelector("#order select");
+  const resultMessage = document.querySelector("#resultMessage");
+
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  const selectedCategory = selectCategory.value;
+  const selectedOrder = selectOrder.value;
+
+  let filteredMovies = allMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm)
+  );
+
+  //categoría
+  if (selectedCategory !== "categorias") {
+    filteredMovies = filteredMovies.filter((movie) =>
+      movie.genre_ids?.includes(Number(selectedCategory))
+    );
+  }
+  //Orden
+  switch (selectedOrder) {
+    case "tituloAscendente":
+      filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case "tituloDescendente":
+      filteredMovies.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+    case "añoAscendente":
+      filteredMovies.sort((a, b) =>
+        (a.release_date || "").localeCompare(b.release_date || "")
+      );
+      break;
+    case "añoDescendente":
+      filteredMovies.sort((a, b) =>
+        (b.release_date || "").localeCompare(a.release_date || "")
+      );
+      break;
+  }
+
+  movieContainer.innerHTML = "";
+
+  if (filteredMovies.length === 0) {
+    resultMessage.textContent = "No se encontraron resultados.";
+  } else if (searchTerm !== "" || selectedCategory !== "categorias") {
+    resultMessage.textContent = `Se han encontrado ${filteredMovies.length} películas.`;
+  } else {
+    resultMessage.textContent = "";
+  }
+
+  const isListView =
+    movieContainer.firstChild?.classList.contains("movie-list");
+
+  if (isListView) {
+    filteredMovies.forEach((movie, i) => {
+      const el = createMovieListElement(movie, i + 1);
+      movieContainer.appendChild(el);
+    });
+  } else {
+    filteredMovies.forEach((movie) => {
+      const el = createMovieElement(movie);
+      movieContainer.appendChild(el);
+    });
+  }
+}
+
+// Debounce (espera antes de filtrar mientras se escribe)
+let debounceTimer;
+searchInput.addEventListener("input", () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(aplicarFiltros, 500);
+});
