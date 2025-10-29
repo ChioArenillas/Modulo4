@@ -87,7 +87,7 @@
     width: 220px; /* esto habría que quitarlo si tenemos las URL */
 }
 .movie-grid-title{
-    margin-bottom: 2px;
+    margin-bottom: 10px;
     font-size: 2em;
     font-weight: bold;
 }

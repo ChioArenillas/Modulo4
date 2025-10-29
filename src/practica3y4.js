@@ -30,7 +30,7 @@ const listOptions = Object.freeze({
 });
 
 let currentListType = listOptions.popular;
-let allMovies = []; //NUEVO
+let allMovies = [];
 
 const baseURL = "https://api.themoviedb.org/3/movie/";
 const apiKey = "c1b971c96d86032775fa6707e4286d30";
