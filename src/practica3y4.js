@@ -8,7 +8,7 @@ Vista detalle de película.
 import { getMovieDetailUrl, getMovieListUrl, getMovies } from "./utils3y4/View3y4";
 import { createMovieElement, createMovieListElement } from "./utils3y4/domUtils3y4"
 import { pageMovieDetail, getMovieCredits, getMovieRecommendations } from "./utils3y4/filmDetail3y4"
-
+import { listOptions, categories, order } from "./utils3y4/categories3y4";
 
 export const movieContainer = document.createElement("div");
 movieContainer.className = "movie-container";
@@ -28,12 +28,6 @@ const nowPlayingButton = document.querySelector(".nowPlaying");
 const topRatedButton = document.querySelector(".topRated");
 const upcomingButton = document.querySelector(".upcoming");
 
-export const listOptions = Object.freeze({
-  nowPlaying: "now_playing",
-  popular: "popular",
-  topRated: "top_rated",
-  upcoming: "upcoming",
-});
 
 let currentListType = listOptions.popular;
 let allMovies = [];
@@ -110,19 +104,6 @@ addMovieGridApi();
 
 
 /* SELECT CATEGORY */
-const categories = Object.freeze({
-  categorias: "-Selecciona Categoría-",
-  28: "Acción",
-  12: "Aventura",
-  16: "Animación",
-  35: "Comedia",
-  80: "Crimen",
-  18: "Drama",
-  10751: "Familiar",
-  14: "Fantasía",
-  27: "Terror",
-  878: "Ciencia ficción",
-});
 
 const select = document.createElement("select");
 select.setAttribute("name", "categories");
@@ -143,15 +124,6 @@ Object.entries(categories).forEach((entry) => {
 document.querySelector("#select").appendChild(select);
 
 /* ORDENAR TÍTULO DIRECTOR AÑO */
-const order = Object.freeze({
-  order: "-Selecciona Orden-",
-  tituloAscendente: "Título A-Z",
-  tituloDescendente: "Título Z-A",
-  directorAscendente: "Director A-Z",
-  directorDescendente: "Director Z-A",
-  añoAscendente: "Año Ascendente",
-  añoDescendente: "Año Descendente",
-});
 
 const selectOrder = document.createElement("select");
 selectOrder.setAttribute("name", "order");
