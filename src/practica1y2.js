@@ -9,9 +9,9 @@ Filtrado, ordenación y búsqueda.
 
 console.clear();
 import { movies } from "./dataFilms";
-import { setupControls } from "./utils/controls.js";
-import { addMovieGrid, addMovieList } from "./utils/View.js";
-import { aplicarFiltros } from "./utils/filters.js";
+import { setupControls } from "./utils1y2/controls1y2.js";
+import { addMovieGrid, addMovieList } from "./utils1y2/View1y2.js";
+import { aplicarFiltros } from "./utils1y2/filters1y2.js";
 
 
 //Oculta los botones de listado

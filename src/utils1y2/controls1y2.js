@@ -1,6 +1,6 @@
-import { addMovieGrid, addMovieList } from "./View.js";
-import { categories, order } from "./categories";
-import { createMovieGridElement, createMovieListElement } from "./domUtils.js";
+import { addMovieGrid, addMovieList } from "./View1y2.js";
+import { categories, order } from "./categories1y2.js";
+import { createMovieGridElement, createMovieListElement } from "./domUtils1y2.js";
 
 //buttons
 export function setupControls(movies, movieContainer, aplicarFiltros){

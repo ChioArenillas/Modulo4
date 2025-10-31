@@ -1,5 +1,5 @@
-import { categories } from "./categories.js";
-import { createMovieGridElement, createMovieListElement } from "./domUtils.js";
+import { categories } from "./categories1y2.js";
+import { createMovieGridElement, createMovieListElement } from "./domUtils1y2.js";
 
 /* FILTROS */
 export function aplicarFiltros(movies, movieContainer) {

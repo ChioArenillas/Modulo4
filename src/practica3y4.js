@@ -5,9 +5,9 @@ Vista detalle de película.
 */
 
 
-import { getMovieDetailUrl, getMovieListUrl, getMovies } from "./utils/View"; //NUEVO
-import { createMovieElement, createMovieListElementApi } from "./utils/domUtils"
-import { pageMovieDetail, getMovieCredits, getMovieRecommendations } from "./utils/filmDetail"
+import { getMovieDetailUrl, getMovieListUrl, getMovies } from "./utils3y4/View3y4";
+import { createMovieElement, createMovieListElement } from "./utils3y4/domUtils3y4"
+import { pageMovieDetail, getMovieCredits, getMovieRecommendations } from "./utils3y4/filmDetail3y4"
 
 
 export const movieContainer = document.createElement("div");
