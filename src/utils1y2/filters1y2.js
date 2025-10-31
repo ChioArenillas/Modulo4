@@ -1,5 +1,8 @@
 import { categories } from "./categories1y2.js";
-import { createMovieGridElement, createMovieListElement } from "./domUtils1y2.js";
+import {
+  createMovieGridElement,
+  createMovieListElement,
+} from "./domUtils1y2.js";
 
 /* FILTROS */
 export function aplicarFiltros(movies, movieContainer) {
@@ -16,7 +19,6 @@ export function aplicarFiltros(movies, movieContainer) {
     movie.title.toLowerCase().includes(searchTerm)
   );
 
-
   //categoría
   if (selectedCategory !== "categorias") {
     filteredMovies = filteredMovies.filter((movie) => {
@@ -27,7 +29,6 @@ export function aplicarFiltros(movies, movieContainer) {
       }
     });
   }
-
 
   //Orden
   switch (selectedOrder) {
@@ -72,10 +73,9 @@ export function aplicarFiltros(movies, movieContainer) {
       movieContainer.appendChild(el);
     });
   } else {
-    filteredMovies.forEach((movie, ) => {
-      const el = createMovieGridElement(movie,);
+    filteredMovies.forEach((movie) => {
+      const el = createMovieGridElement(movie);
       movieContainer.appendChild(el);
     });
   }
-
 }

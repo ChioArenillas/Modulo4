@@ -1,4 +1,8 @@
+import { movieContainer } from "../practica3y4";
+import { baseURL, apiKey, langCode } from "../practica3y4";
+import { getMovieDetail } from "./View3y4";
 /* PÁGINA DETALLE PELI */
+
 export async function pageMovieDetail(movie) {
   movieContainer.innerHTML = "";
   const detailContainer = document.createElement("div");
@@ -187,4 +191,3 @@ export async function getMovieRecommendations(movieId) {
     return [];
   }
 }
-

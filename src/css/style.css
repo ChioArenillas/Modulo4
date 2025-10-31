@@ -84,7 +84,7 @@
 .movie-grid-poster{
     border-radius: 8px;
     margin-bottom: 10px;
-    width: 220px; /* esto habría que quitarlo si tenemos las URL */
+    width: 220px;
 }
 .movie-grid-title{
     margin-bottom: 10px;
@@ -102,10 +102,6 @@
 .movie-grid-description{
     margin: 6px 0;
     line-height: 1.4;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    overflow: hidden;
 }
 .movie-grid-other{
     line-height: 1.4;

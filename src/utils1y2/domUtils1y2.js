@@ -1,4 +1,3 @@
-
 /* GRID */
 export function createMovieGridElement(movieObj) {
   const movieElement = document.createElement("div");
@@ -18,7 +17,7 @@ export function createMovieGridElement(movieObj) {
 
   const description = document.createElement("div");
   description.className = "movie-grid-other";
-  description.textContent = `${ movieObj.description}`;
+  description.textContent = `${movieObj.description}`;
 
   const director = document.createElement("div");
   director.className = "movie-grid-other";
@@ -27,7 +26,7 @@ export function createMovieGridElement(movieObj) {
   const actors = document.createElement("div");
   actors.className = "movie-grid-other";
   actors.textContent = `Actors: ${movieObj.actors}`;
-  
+
   const heading = document.createElement("div");
   heading.className = "movie-grid-description-heading";
   heading.textContent = `Sumary`;
@@ -51,7 +50,7 @@ export function createMovieListElement(movieObj, rank) {
   rankElement.textContent = rank;
 
   const poster = document.createElement("img");
-  poster.src = `${ movieObj.poster}`;
+  poster.src = `${movieObj.poster}`;
   poster.className = "movie-list-poster";
 
   const title = document.createElement("div");

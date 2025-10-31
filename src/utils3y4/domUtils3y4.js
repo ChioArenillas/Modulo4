@@ -1,4 +1,4 @@
-
+import { getMovieDetail } from "./View3y4";
 /* GRID */
 
 export function createPosterElement(posterPath) {
@@ -48,8 +48,7 @@ export function createMovieElement(movie) {
 
   return movieElement;
 }
-import { pageMovieDetail } from "./filmDetail3y4"
-
+import { pageMovieDetail } from "./filmDetail3y4";
 
 /* LIST */
 export function createMovieListElement(movieObj, rank) {

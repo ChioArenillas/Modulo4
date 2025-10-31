@@ -1,5 +1,8 @@
 import { movies } from "../dataFilms.js";
-import { createMovieGridElement, createMovieListElement } from "./domUtils1y2.js";
+import {
+  createMovieGridElement,
+  createMovieListElement,
+} from "./domUtils1y2.js";
 
 //formato Grid
 export function addMovieGrid(movies, movieContainer) {

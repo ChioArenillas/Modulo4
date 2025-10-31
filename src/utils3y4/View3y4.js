@@ -1,9 +1,4 @@
-
-//esto hay que hacer un import
-
-const baseURL = "https://api.themoviedb.org/3/movie/";
-const apiKey = "c1b971c96d86032775fa6707e4286d30";
-const langCode = "es-ES";
+import { baseURL, apiKey, langCode } from "../practica3y4";
 
 //sacar el listado de pelis
 export function getMovieListUrl(listOption) {
@@ -36,4 +31,3 @@ export async function getMovieDetail(movieId) {
     return null;
   }
 }
-

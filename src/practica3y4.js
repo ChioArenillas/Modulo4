@@ -4,10 +4,20 @@ Práctica 4
 Vista detalle de película.
 */
 
-
-import { getMovieDetailUrl, getMovieListUrl, getMovies } from "./utils3y4/View3y4";
-import { createMovieElement, createMovieListElement } from "./utils3y4/domUtils3y4"
-import { pageMovieDetail, getMovieCredits, getMovieRecommendations } from "./utils3y4/filmDetail3y4"
+import {
+  getMovieDetailUrl,
+  getMovieListUrl,
+  getMovies,
+} from "./utils3y4/View3y4";
+import {
+  createMovieElement,
+  createMovieListElement,
+} from "./utils3y4/domUtils3y4";
+import {
+  pageMovieDetail,
+  getMovieCredits,
+  getMovieRecommendations,
+} from "./utils3y4/filmDetail3y4";
 import { listOptions, categories, order } from "./utils3y4/categories3y4";
 import { aplicarFiltros } from "./utils3y4/filters3y4";
 
@@ -29,14 +39,12 @@ const nowPlayingButton = document.querySelector(".nowPlaying");
 const topRatedButton = document.querySelector(".topRated");
 const upcomingButton = document.querySelector(".upcoming");
 
-
 export let currentListType = listOptions.popular;
 export let allMovies = [];
 
-//convertirlo en una función para exportar
-  const baseURL = "https://api.themoviedb.org/3/movie/";
-  const apiKey = "c1b971c96d86032775fa6707e4286d30";
-  const langCode = "es-ES";
+export const baseURL = "https://api.themoviedb.org/3/movie/";
+export const apiKey = "c1b971c96d86032775fa6707e4286d30";
+export const langCode = "es-ES";
 
 /* RENDERIZADO */
 export async function addMovieGridApi() {
@@ -58,7 +66,6 @@ export function renderMovies(movies, view = "grid") {
     movieContainer.appendChild(el);
   });
 }
-
 
 /*  BOTONES  */
 function clickGrid() {
@@ -101,8 +108,6 @@ upcomingButton.addEventListener("click", () => {
 /*  INICIO  */
 document.querySelector("#root").appendChild(movieContainer);
 addMovieGridApi();
-
-
 
 /* SELECT CATEGORY */
 
@@ -176,7 +181,6 @@ searchInput.addEventListener("input", () => {
     });
   }
 });
-
 
 // Debounce (espera antes de filtrar mientras se escribe)
 let debounceTimer;

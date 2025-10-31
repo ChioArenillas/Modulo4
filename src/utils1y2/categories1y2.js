@@ -1,4 +1,4 @@
-//PRÁCTICA 1 Y 2 
+//PRÁCTICA 1 Y 2
 
 /* SELECT CATEGORY */
 
@@ -23,5 +23,3 @@ export const order = Object.freeze({
   añoAscendente: "Año Ascendente",
   añoDescendente: "Año Descendente",
 });
-
-

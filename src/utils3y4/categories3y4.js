@@ -1,4 +1,3 @@
-
 export const listOptions = Object.freeze({
   nowPlaying: "now_playing",
   popular: "popular",
