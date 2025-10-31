@@ -9,6 +9,7 @@ import { getMovieDetailUrl, getMovieListUrl, getMovies } from "./utils3y4/View3y
 import { createMovieElement, createMovieListElement } from "./utils3y4/domUtils3y4"
 import { pageMovieDetail, getMovieCredits, getMovieRecommendations } from "./utils3y4/filmDetail3y4"
 import { listOptions, categories, order } from "./utils3y4/categories3y4";
+import { aplicarFiltros } from "./utils3y4/filters3y4";
 
 export const movieContainer = document.createElement("div");
 movieContainer.className = "movie-container";
@@ -29,8 +30,8 @@ const topRatedButton = document.querySelector(".topRated");
 const upcomingButton = document.querySelector(".upcoming");
 
 
-let currentListType = listOptions.popular;
-let allMovies = [];
+export let currentListType = listOptions.popular;
+export let allMovies = [];
 
 //convertirlo en una función para exportar
   const baseURL = "https://api.themoviedb.org/3/movie/";
@@ -176,72 +177,6 @@ searchInput.addEventListener("input", () => {
   }
 });
 
-/* FILTROS */
-export function aplicarFiltros() {
-  const searchInput = document.querySelector("#search");
-  const selectCategory = document.querySelector("#select select");
-  const selectOrder = document.querySelector("#order select");
-  const resultMessage = document.querySelector("#resultMessage");
-
-  const searchTerm = searchInput.value.toLowerCase().trim();
-  const selectedCategory = selectCategory.value;
-  const selectedOrder = selectOrder.value;
-
-  let filteredMovies = allMovies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchTerm)
-  );
-
-  //categoría
-  if (selectedCategory !== "categorias") {
-    filteredMovies = filteredMovies.filter((movie) =>
-      movie.genre_ids?.includes(Number(selectedCategory))
-    );
-  }
-  //Orden
-  switch (selectedOrder) {
-    case "tituloAscendente":
-      filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
-      break;
-    case "tituloDescendente":
-      filteredMovies.sort((a, b) => b.title.localeCompare(a.title));
-      break;
-    case "añoAscendente":
-      filteredMovies.sort((a, b) =>
-        (a.release_date || "").localeCompare(b.release_date || "")
-      );
-      break;
-    case "añoDescendente":
-      filteredMovies.sort((a, b) =>
-        (b.release_date || "").localeCompare(a.release_date || "")
-      );
-      break;
-  }
-
-  movieContainer.innerHTML = "";
-
-  if (filteredMovies.length === 0) {
-    resultMessage.textContent = "No se encontraron resultados.";
-  } else if (searchTerm !== "" || selectedCategory !== "categorias") {
-    resultMessage.textContent = `Se han encontrado ${filteredMovies.length} películas.`;
-  } else {
-    resultMessage.textContent = "";
-  }
-
-  const isListView =
-    movieContainer.firstChild?.classList.contains("movie-list");
-
-  if (isListView) {
-    filteredMovies.forEach((movie, i) => {
-      const el = createMovieListElement(movie, i + 1);
-      movieContainer.appendChild(el);
-    });
-  } else {
-    filteredMovies.forEach((movie) => {
-      const el = createMovieElement(movie);
-      movieContainer.appendChild(el);
-    });
-  }
-}
 
 // Debounce (espera antes de filtrar mientras se escribe)
 let debounceTimer;
