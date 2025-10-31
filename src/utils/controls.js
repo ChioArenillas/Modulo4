@@ -1,6 +1,6 @@
 import { addMovieGrid, addMovieList } from "./View.js";
 import { categories, order } from "./categories";
-import { createMovieElement, createMovieListElement } from "./domUtils.js";
+import { createMovieGridElement, createMovieListElement } from "./domUtils.js";
 
 //buttons
 export function setupControls(movies, movieContainer, aplicarFiltros){
@@ -92,7 +92,7 @@ searchInput.addEventListener("input", () => {
     });
   } else {
     filteredMovies.forEach((movie) => {
-      const movieElement = createMovieElement(movie);
+      const movieElement = createMovieGridElement(movie);
       movieContainer.appendChild(movieElement);
     });
   }

@@ -102,6 +102,10 @@
 .movie-grid-description{
     margin: 6px 0;
     line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
 }
 .movie-grid-other{
     line-height: 1.4;

@@ -1,5 +1,5 @@
 import { categories } from "./categories.js";
-import { createMovieElement, createMovieListElement } from "./domUtils.js";
+import { createMovieGridElement, createMovieListElement } from "./domUtils.js";
 
 /* FILTROS */
 export function aplicarFiltros(movies, movieContainer) {
@@ -73,7 +73,7 @@ export function aplicarFiltros(movies, movieContainer) {
     });
   } else {
     filteredMovies.forEach((movie, ) => {
-      const el = createMovieElement(movie,);
+      const el = createMovieGridElement(movie,);
       movieContainer.appendChild(el);
     });
   }
